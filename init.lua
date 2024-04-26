@@ -145,6 +145,19 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
+-- find and hilight full-width space
+vim.api.nvim_create_augroup('extra-whitespace', {})
+vim.api.nvim_create_autocmd({ 'VimEnter', 'WinEnter' }, {
+  group = 'extra-whitespace',
+  pattern = { '*' },
+  command = [[call matchadd('ExtraWhitespace', '[\u200B\u3000]')]],
+})
+vim.api.nvim_create_autocmd({ 'ColorScheme' }, {
+  group = 'extra-whitespace',
+  pattern = { '*' },
+  command = [[highlight default ExtraWhitespace ctermbg=202 ctermfg=202 guibg=salmon]],
+})
+
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
