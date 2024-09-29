@@ -84,6 +84,9 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
+-- individual keymap
+vim.keymap.set('n', 'ciy', 'ciw<C-r>0<ESC>')
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -138,6 +141,8 @@ vim.opt.timeoutlen = 300
 -- Configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+
+vim.opt.tabstop = 2
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
